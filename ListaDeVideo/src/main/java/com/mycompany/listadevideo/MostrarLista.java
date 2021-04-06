@@ -85,12 +85,22 @@ public class MostrarLista extends javax.swing.JFrame {
 
         listaDeListas.setBackground(new java.awt.Color(204, 255, 255));
         listaDeListas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Listas>" }));
+        listaDeListas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaDeListasActionPerformed(evt);
+            }
+        });
 
         agregarVideo.setBackground(new java.awt.Color(102, 102, 255));
         agregarVideo.setText("Agregar un Video a la Lista");
 
         agregarLista.setBackground(new java.awt.Color(102, 102, 255));
         agregarLista.setText("Crea una Nueva Lista");
+        agregarLista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarListaActionPerformed(evt);
+            }
+        });
 
         anterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -154,6 +164,18 @@ public class MostrarLista extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void agregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarListaActionPerformed
+        DialogoListas creando = new DialogoListas(this, true);
+        creando.setVisible(true);
+        Lista nueva = new Lista();
+        String nombreLista = DialogoListas.g
+        nueva.setNombreLista(nombreLista);
+    }//GEN-LAST:event_agregarListaActionPerformed
+
+    private void listaDeListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeListasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listaDeListasActionPerformed
 
     /**
      * @param args the command line arguments
