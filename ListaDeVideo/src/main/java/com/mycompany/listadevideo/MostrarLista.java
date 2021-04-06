@@ -7,6 +7,7 @@ package com.mycompany.listadevideo;
 
 import java.awt.Image;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -93,6 +94,11 @@ public class MostrarLista extends javax.swing.JFrame {
 
         agregarVideo.setBackground(new java.awt.Color(102, 102, 255));
         agregarVideo.setText("Agregar un Video a la Lista");
+        agregarVideo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarVideoActionPerformed(evt);
+            }
+        });
 
         agregarLista.setBackground(new java.awt.Color(102, 102, 255));
         agregarLista.setText("Crea una Nueva Lista");
@@ -166,16 +172,22 @@ public class MostrarLista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarListaActionPerformed
-        DialogoListas creando = new DialogoListas(this, true);
-        creando.setVisible(true);
-        Lista nueva = new Lista();
-        String nombreLista = DialogoListas.g
-        nueva.setNombreLista(nombreLista);
+        String nombre;
+        nombre = JOptionPane.showInputDialog("Ingrese el niombre de la Lista: ");
+        listaDeListas.addItem(nombre);
+        
     }//GEN-LAST:event_agregarListaActionPerformed
 
     private void listaDeListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeListasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaDeListasActionPerformed
+
+    private void agregarVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarVideoActionPerformed
+        String nombre;
+        nombre = JOptionPane.showInputDialog("Ingrese el niombre del Video: ");
+        String descripcion;
+        descripcion = JOptionPane.showInputDialog("Ingrese la descripcion del Video: ");
+    }//GEN-LAST:event_agregarVideoActionPerformed
 
     /**
      * @param args the command line arguments

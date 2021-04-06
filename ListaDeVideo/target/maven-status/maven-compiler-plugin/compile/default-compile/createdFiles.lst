@@ -1,9 +1,8 @@
 com\mycompany\listadevideo\Lista.class
 com\mycompany\listadevideo\MostrarLista.class
-com\mycompany\listadevideo\DialogoListas$1.class
-com\mycompany\listadevideo\DialogoListas$1$1.class
+com\mycompany\listadevideo\MostrarLista$4.class
+com\mycompany\listadevideo\MostrarLista$3.class
 com\mycompany\listadevideo\MostrarLista$1.class
 com\mycompany\listadevideo\Nodo.class
 com\mycompany\listadevideo\MostrarLista$2.class
 com\mycompany\listadevideo\Video.class
-com\mycompany\listadevideo\DialogoListas.class
