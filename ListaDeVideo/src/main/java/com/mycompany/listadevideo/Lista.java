@@ -16,13 +16,21 @@ import java.io.PrintWriter;
 public class Lista {
     
     private int tamaño;
-    private String nombreLista;
+    String nombreLista;
     private Nodo frente;
     private Nodo fondo;
     private Nodo indicador;
     
     public Lista() {
 	this.frente = null;
+	this.fondo = null;
+	this.tamaño = 0;
+        this.indicador = null;
+    }
+    
+    public Lista(String nombre) {
+	this.nombreLista = nombre;
+        this.frente = null;
 	this.fondo = null;
 	this.tamaño = 0;
         this.indicador = null;

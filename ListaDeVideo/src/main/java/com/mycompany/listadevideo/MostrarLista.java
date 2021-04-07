@@ -6,6 +6,9 @@
 package com.mycompany.listadevideo;
 
 import java.awt.Image;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -173,9 +176,14 @@ public class MostrarLista extends javax.swing.JFrame {
 
     private void agregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarListaActionPerformed
         String nombre;
-        nombre = JOptionPane.showInputDialog("Ingrese el niombre de la Lista: ");
+        nombre = JOptionPane.showInputDialog("Ingrese el nombre de la Lista: ");
         listaDeListas.addItem(nombre);
-        
+        Lista listaNueva = new Lista(nombre);
+        try {
+            this.listaGeneral.InsertarListaFinal(listaNueva);
+        } catch (IOException ex) {
+            Logger.getLogger(MostrarLista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_agregarListaActionPerformed
 
     private void listaDeListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeListasActionPerformed
@@ -187,6 +195,11 @@ public class MostrarLista extends javax.swing.JFrame {
         nombre = JOptionPane.showInputDialog("Ingrese el niombre del Video: ");
         String descripcion;
         descripcion = JOptionPane.showInputDialog("Ingrese la descripcion del Video: ");
+        try {
+            this.listaGeneral.Actual().InsertarFinal(nombre, descripcion, "");
+        } catch (IOException ex) {
+            Logger.getLogger(MostrarLista.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_agregarVideoActionPerformed
 
     /**
@@ -219,11 +232,12 @@ public class MostrarLista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                listaGeneral = new ListaLista();
                 new MostrarLista().setVisible(true);
             }
         });
     }
-
+    private static ListaLista listaGeneral;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MostrarVideo;
     private javax.swing.JToggleButton agregarLista;
