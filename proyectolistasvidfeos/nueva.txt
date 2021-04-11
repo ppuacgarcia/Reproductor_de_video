@@ -1,0 +1,8 @@
+Nombre: null
+Descripcion: null
+Direccion: null
+
+Nombre: perro
+Descripcion: si
+Direccion: perro
+
