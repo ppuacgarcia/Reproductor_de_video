@@ -29,8 +29,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MostrarLista extends javax.swing.JFrame {
      private final JFXPanel jfxpanel =new JFXPanel();
-    private final File file=new File("C:\\Users\\m825\\Desktop\\Archivos\\darling in the franxx\\Darling in the franxx - 07 (DF).mp4");
-    private final MediaPlayer oracleVid=new MediaPlayer(new Media(file.toURI().toString()));
+    private  File file=new File("C:\\Users\\m825\\Desktop\\Archivos\\darling in the franxx\\Darling in the franxx - 07 (DF).mp4");
+    private MediaPlayer oracleVid=new MediaPlayer(new Media(file.toURI().toString()));
     /**
      * Creates new form MostrarLista
      */
@@ -106,6 +106,7 @@ public class MostrarLista extends javax.swing.JFrame {
         agregarLista = new javax.swing.JToggleButton();
         agregarVideo = new javax.swing.JButton();
         listaDeListas = new javax.swing.JComboBox<>();
+        agregarVideo1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 255));
@@ -113,12 +114,32 @@ public class MostrarLista extends javax.swing.JFrame {
         MostrarVideo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         anterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        anterior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anteriorActionPerformed(evt);
+            }
+        });
 
         reproducir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        reproducir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reproducirActionPerformed(evt);
+            }
+        });
 
         pausa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pausa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pausaActionPerformed(evt);
+            }
+        });
 
         siguiente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        siguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                siguienteActionPerformed(evt);
+            }
+        });
 
         nombreVideo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -149,6 +170,14 @@ public class MostrarLista extends javax.swing.JFrame {
             }
         });
 
+        agregarVideo1.setBackground(new java.awt.Color(102, 102, 255));
+        agregarVideo1.setText("Reproducir lista actual");
+        agregarVideo1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarVideo1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout MostrarVideoLayout = new javax.swing.GroupLayout(MostrarVideo);
         MostrarVideo.setLayout(MostrarVideoLayout);
         MostrarVideoLayout.setHorizontalGroup(
@@ -170,16 +199,23 @@ public class MostrarLista extends javax.swing.JFrame {
                 .addContainerGap(546, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MostrarVideoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(MostrarVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(agregarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listaDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
+                .addGroup(MostrarVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MostrarVideoLayout.createSequentialGroup()
+                        .addGroup(MostrarVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(agregarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(agregarVideo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(listaDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MostrarVideoLayout.createSequentialGroup()
+                        .addComponent(agregarVideo1)
+                        .addGap(120, 120, 120))))
         );
         MostrarVideoLayout.setVerticalGroup(
             MostrarVideoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MostrarVideoLayout.createSequentialGroup()
-                .addContainerGap(138, Short.MAX_VALUE)
+                .addContainerGap(100, Short.MAX_VALUE)
+                .addComponent(agregarVideo1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(listaDeListas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(agregarVideo)
@@ -234,10 +270,10 @@ public class MostrarLista extends javax.swing.JFrame {
         String descripcion;
         descripcion = JOptionPane.showInputDialog("Ingrese la descripcion del Video: ");
         String ruta="";
-         JFileChooser fc=new JFileChooser();
-       fc.setAcceptAllFileFilterUsed(false);
-       fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-       fc.addChoosableFileFilter(new FileNameExtensionFilter("Videos","mp4"));
+        JFileChooser fc=new JFileChooser();
+        fc.setAcceptAllFileFilterUsed(false);
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.addChoosableFileFilter(new FileNameExtensionFilter("Videos","mp4"));
         int seleccion=fc.showOpenDialog(this);
         if(seleccion==JFileChooser.APPROVE_OPTION){
            File fichero=fc.getSelectedFile();
@@ -249,6 +285,45 @@ public class MostrarLista extends javax.swing.JFrame {
             Logger.getLogger(MostrarLista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_agregarVideoActionPerformed
+
+    private void reproducirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reproducirActionPerformed
+        oracleVid.play();
+    }//GEN-LAST:event_reproducirActionPerformed
+
+    private void pausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pausaActionPerformed
+       oracleVid.pause();
+       
+    }//GEN-LAST:event_pausaActionPerformed
+
+    private void agregarVideo1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarVideo1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarVideo1ActionPerformed
+    private void  CambiarVideo(){
+       file=null; 
+       oracleVid=null;
+       file=new File(listaGeneral.ObtenerIndicador().getLista().Actual());
+       System.out.println(listaGeneral.ObtenerIndicador().getLista().Actual());
+       oracleVid=new MediaPlayer(new Media(file.toURI().toString()));
+       createScene();
+       oracleVid.play();
+       
+    }
+    
+    private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
+        
+       oracleVid.pause();
+       listaGeneral.Adelantar();
+       CambiarVideo();
+      
+       
+       
+    }//GEN-LAST:event_siguienteActionPerformed
+
+    private void anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorActionPerformed
+        oracleVid.pause();
+       listaGeneral.Retroceder();
+       CambiarVideo();
+    }//GEN-LAST:event_anteriorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -291,6 +366,7 @@ public class MostrarLista extends javax.swing.JFrame {
     private javax.swing.JPanel MostrarVideo;
     private javax.swing.JToggleButton agregarLista;
     private javax.swing.JButton agregarVideo;
+    private javax.swing.JButton agregarVideo1;
     private javax.swing.JButton anterior;
     private javax.swing.JLabel descripcionLista;
     private javax.swing.JComboBox<String> listaDeListas;

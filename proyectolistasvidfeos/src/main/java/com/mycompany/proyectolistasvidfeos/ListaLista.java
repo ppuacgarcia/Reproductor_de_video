@@ -70,5 +70,8 @@ public class ListaLista {
         }
         return null;
     }
+    public NodoLista ObtenerIndicador(){
+       return this.indicador;
+    }
     
 }
