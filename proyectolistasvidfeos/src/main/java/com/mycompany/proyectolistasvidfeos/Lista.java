@@ -16,7 +16,7 @@ import java.io.PrintWriter;
 public class Lista {
     
     private int tamaño;
-    String nombreLista;
+    private String nombreLista;
     private Nodo frente;
     private Nodo fondo;
     private Nodo indicador;
@@ -44,6 +44,9 @@ public class Lista {
         this.nombreLista = nombreLista;
     }
 
+    public Nodo getIndicador() {
+        return indicador;
+    }
     
     public void InsertarFinal(String nombre, String descripcion, String direccion) throws IOException
     {

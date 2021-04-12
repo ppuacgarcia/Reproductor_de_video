@@ -1,0 +1,4 @@
+Nombre: xs
+Descripcion: XSA
+Direccion: C:\Users\Silver VG\Downloads\Subtitulos en Adobe Premiere - TUTORIAL.mp4
+

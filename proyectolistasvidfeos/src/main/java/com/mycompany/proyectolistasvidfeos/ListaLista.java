@@ -5,7 +5,9 @@
  */
 package com.mycompany.proyectolistasvidfeos;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -33,7 +35,6 @@ public class ListaLista {
         {
             this.frente = nuevo;
             this.fondo = nuevo;
-            this.indicador = nuevo;
             this.tamaño = 1;
         }
         else
@@ -44,6 +45,7 @@ public class ListaLista {
             aux.setSiguiente(fondo);
             this.tamaño++;
         }
+        ActualizarLista();
     }
     
     public void Adelantar()
@@ -72,6 +74,50 @@ public class ListaLista {
     }
     public NodoLista ObtenerIndicador(){
        return this.indicador;
+    }
+    
+    public String Mostrar() {
+	NodoLista aux = this.frente;
+	String resultado = "";
+	while (aux != null) {
+		resultado = resultado +  "Nombre: " + aux.getLista().getNombreLista() + "\n";
+		if (aux != this.fondo)
+                {
+                    resultado = resultado + "\n";
+                }	
+		aux = aux.getSiguiente();
+	}
+	return resultado;
+    }
+    
+    public void ActualizarLista() throws IOException
+    {
+        FileWriter archivo = null;
+        PrintWriter printWriter = null;
+        NodoLista aux = this.frente;
+        try
+        {
+            archivo = new FileWriter("lista.txt");
+            printWriter = new PrintWriter(archivo);
+            printWriter.println(Mostrar());
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        archivo.close();
+    }
+    
+    public void Buscar(String referencia)
+    {
+        NodoLista aux = this.frente;
+	while (aux != null) {
+            if (aux.getLista().getNombreLista().equals(referencia))
+            {
+                this.indicador = aux;
+            }
+            aux = aux.getSiguiente();
+	}
     }
     
 }
