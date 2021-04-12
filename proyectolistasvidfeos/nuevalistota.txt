@@ -1,0 +1,8 @@
+Nombre: pate
+Descripcion: de fua
+Direccion: C:\Users\m825\Desktop\Archivos\Boku no hero academia\temp1\01.mp4
+
+Nombre: 
+Descripcion: 
+Direccion: C:\Users\m825\Desktop\Archivos\Boku no hero academia\temp1\02.mp4
+

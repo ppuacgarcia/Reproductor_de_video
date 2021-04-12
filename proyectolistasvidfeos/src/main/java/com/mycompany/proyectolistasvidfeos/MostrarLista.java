@@ -306,13 +306,12 @@ public class MostrarLista extends javax.swing.JFrame {
        oracleVid=new MediaPlayer(new Media(file.toURI().toString()));
        createScene();
        oracleVid.play();
-       
     }
     
     private void siguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_siguienteActionPerformed
         
        oracleVid.pause();
-       listaGeneral.Adelantar();
+       listaGeneral.ObtenerIndicador().getLista().Adelantar();
        CambiarVideo();
       
        
@@ -321,7 +320,7 @@ public class MostrarLista extends javax.swing.JFrame {
 
     private void anteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anteriorActionPerformed
         oracleVid.pause();
-       listaGeneral.Retroceder();
+       listaGeneral.ObtenerIndicador().getLista().Retroceder();
        CambiarVideo();
     }//GEN-LAST:event_anteriorActionPerformed
 
