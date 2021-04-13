@@ -108,15 +108,40 @@ public class ListaLista {
         archivo.close();
     }
     
-    public void Buscar(String referencia)
+    public NodoLista Buscar(String referencia)
     {
         NodoLista aux = this.frente;
 	while (aux != null) {
             if (aux.getLista().getNombreLista().equals(referencia))
             {
-                this.indicador = aux;
+                return aux;
             }
             aux = aux.getSiguiente();
+	}
+        return null;
+    }
+    
+    public void SeleccionarLista (String referencia)
+    {
+        NodoLista aux = Buscar(referencia);
+        if (aux != null)
+        {
+            this.indicador = aux;
+        }
+    }
+    
+    public boolean Repetido (String referencia)
+    {
+	NodoLista aux = Buscar(referencia);
+	if (aux != null)
+        {
+            System.out.println("No se pueden guardar dos listas con el mismo nombre.");
+            return true;
+        }
+        else
+        {
+            System.out.println("Lista guardada con exito.");
+            return false;
 	}
     }
     

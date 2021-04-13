@@ -63,7 +63,8 @@ public class MostrarLista extends javax.swing.JFrame {
         anterior.setIcon(ian);
         
     }
-     private void createScene(){
+    
+    private void createScene(){
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -266,17 +267,20 @@ public class MostrarLista extends javax.swing.JFrame {
     private void agregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarListaActionPerformed
         String nombre;
         nombre = JOptionPane.showInputDialog("Ingrese el nombre de la Lista: ");
-        listaDeListas.addItem(nombre);
         Lista listaNueva = new Lista(nombre);
         try {
-            this.listaGeneral.InsertarListaFinal(listaNueva);
+            if (this.listaGeneral.Repetido(nombre) == false)
+            {
+                this.listaGeneral.InsertarListaFinal(listaNueva);
+                listaDeListas.addItem(nombre);
+            }
         } catch (IOException ex) {
             Logger.getLogger(MostrarLista.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_agregarListaActionPerformed
 
     private void listaDeListasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDeListasActionPerformed
-        listaGeneral.Buscar(listaDeListas.getSelectedItem().toString());
+        listaGeneral.SeleccionarLista(listaDeListas.getSelectedItem().toString());
     }//GEN-LAST:event_listaDeListasActionPerformed
 
     private void agregarVideoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarVideoActionPerformed
