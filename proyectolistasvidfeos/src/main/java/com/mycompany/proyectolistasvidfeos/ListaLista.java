@@ -26,6 +26,14 @@ public class ListaLista {
 	this.tamaño = 0;
         this.indicador = null;
     }
+
+    public NodoLista getFrente() {
+        return frente;
+    }
+
+    public NodoLista getFondo() {
+        return fondo;
+    }
     
     public void InsertarListaFinal(Lista lista) throws IOException
     {
@@ -144,5 +152,4 @@ public class ListaLista {
             return false;
 	}
     }
-    
 }

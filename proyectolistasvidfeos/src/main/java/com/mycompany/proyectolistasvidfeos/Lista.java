@@ -130,4 +130,9 @@ public class Lista {
         archivo.close();
     }
     
+    public void VolverAlInicio()
+    {
+        this.indicador = this.frente;
+    }
+    
 }
