@@ -30,7 +30,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class MostrarLista extends javax.swing.JFrame {
      private final JFXPanel jfxpanel =new JFXPanel();
      //C:\\Users\\Josed\\Downloads\\Vprueba.mp4
-    private  File file=new File("C:\\\\Users\\\\Silver VG\\\\Downloads\\\\Pato Lucas - El Hechicero [HD].mp4");
+    private  File file=new File("C:\\Users\\m825\\Desktop\\Archivos\\Boku no hero academia\\temp1\\01.mp4");
     private MediaPlayer oracleVid=new MediaPlayer(new Media(file.toURI().toString()));
     /**
      * Creates new form MostrarLista
@@ -39,7 +39,7 @@ public class MostrarLista extends javax.swing.JFrame {
         initComponents();
         createScene();
         setTitle("REPRODUCTOR DE VIDEO");
-        setResizable(true);
+        setResizable(false);
         setLocationRelativeTo(null);
         Reproductor.setLayout(new BorderLayout());
         Reproductor.add(jfxpanel,BorderLayout.CENTER);
