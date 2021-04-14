@@ -78,6 +78,10 @@ public class Lista {
             this.indicador=this.indicador.getSiguiente();
         }
     }
+    public void AdelantarNombre(){
+        this.indicador=this.indicador.getSiguiente();
+    
+    }
     
     public void Retroceder()
     {
@@ -95,7 +99,13 @@ public class Lista {
         }
         return "";
     }
-    
+    public String NombreActual(){
+        if (this.indicador != null)
+        {
+            return this.indicador.getVideo().getNombreVideo();
+        }
+        return "";
+    }
     public String Mostrar() {
 	Nodo aux = this.frente;
 	String resultado = "";
@@ -128,6 +138,11 @@ public class Lista {
             e.printStackTrace();
         }
         archivo.close();
+    }
+    
+    public void VolverAlInicio()
+    {
+        this.indicador = this.frente;
     }
     
 }

@@ -19,6 +19,7 @@ public class Nodo {
         this.video = null;
         this.siguiente = null;
         this.anterior = null;
+        
     }
     
     public Nodo(Video video) {

@@ -19,6 +19,9 @@ public class NodoLista {
         this.lista = lista;
         this.siguiente = null;
         this.anterior = null;
+        
+
+
     }
     
     public NodoLista() {

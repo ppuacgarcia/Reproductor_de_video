@@ -5,6 +5,7 @@
  */
 package com.mycompany.proyectolistasvidfeos;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +15,7 @@ import java.io.PrintWriter;
  * @author Triasic Ranger
  */
 public class ListaLista {
-    
+    private File general=new File("lista.txt");
     private int tamaño;
     private NodoLista frente;
     private NodoLista fondo;
@@ -25,6 +26,15 @@ public class ListaLista {
 	this.fondo = null;
 	this.tamaño = 0;
         this.indicador = null;
+    }
+
+    public NodoLista getFrente() {
+        return frente;
+    }
+
+    public NodoLista getFondo() {
+        return fondo;
+        
     }
     
     public void InsertarListaFinal(Lista lista) throws IOException
@@ -80,7 +90,7 @@ public class ListaLista {
 	NodoLista aux = this.frente;
 	String resultado = "";
 	while (aux != null) {
-		resultado = resultado +  "Nombre: " + aux.getLista().getNombreLista() + "\n";
+		resultado = resultado + aux.getLista().getNombreLista();
 		if (aux != this.fondo)
                 {
                     resultado = resultado + "\n";
@@ -89,23 +99,28 @@ public class ListaLista {
 	}
 	return resultado;
     }
-    
+     
     public void ActualizarLista() throws IOException
     {
+       
+                
+          
         FileWriter archivo = null;
         PrintWriter printWriter = null;
         NodoLista aux = this.frente;
         try
         {
-            archivo = new FileWriter("lista.txt");
-            printWriter = new PrintWriter(archivo);
-            printWriter.println(Mostrar());
+           archivo = new FileWriter("lista.txt");
+                printWriter = new PrintWriter(archivo);
+                printWriter.println(Mostrar());
+            
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
         archivo.close();
+        
     }
     
     public NodoLista Buscar(String referencia)
@@ -144,5 +159,4 @@ public class ListaLista {
             return false;
 	}
     }
-    
 }
