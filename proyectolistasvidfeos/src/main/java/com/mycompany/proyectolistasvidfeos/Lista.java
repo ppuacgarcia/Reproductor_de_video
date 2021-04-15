@@ -110,13 +110,10 @@ public class Lista {
 	Nodo aux = this.frente;
 	String resultado = "";
 	while (aux != null) {
-		resultado = resultado +  "Nombre: " + aux.getVideo().getNombreVideo() + "\n";
-                resultado = resultado +  "Descripcion: " + aux.getVideo().getDescripcionVideo() + "\n";
-                resultado = resultado +  "Direccion: " + aux.getVideo().getDireccionVideo()+ "\n";
-		if (aux != this.fondo)
-                {
-                    resultado = resultado + "\n";
-                }	
+		resultado = resultado + aux.getVideo().getNombreVideo() + "\n";
+                resultado = resultado + aux.getVideo().getDescripcionVideo() + "\n";
+                resultado = resultado+ aux.getVideo().getDireccionVideo()+ "\n";
+			
 		aux = aux.getSiguiente();
 	}
 	return resultado;

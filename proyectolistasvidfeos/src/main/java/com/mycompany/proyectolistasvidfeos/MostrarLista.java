@@ -49,7 +49,7 @@ public class MostrarLista extends javax.swing.JFrame {
          LeerInicio();
         //System.out.println(listaGeneral.Mostrar());
         createScene();
-        
+       
         setTitle("REPRODUCTOR DE VIDEO");
         setResizable(false);
         setLocationRelativeTo(null);
@@ -130,6 +130,7 @@ public class MostrarLista extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 204, 255));
 
         MostrarVideo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        MostrarVideo.setForeground(new java.awt.Color(51, 51, 51));
 
         anterior.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         anterior.addActionListener(new java.awt.event.ActionListener() {
@@ -307,7 +308,9 @@ public class MostrarLista extends javax.swing.JFrame {
                         {
                             
                             this.listaGeneral.InsertarListaFinal(listaNueva);
+                            LeerInicioListas(bfRead);
                             listaDeListas.addItem(bfRead);
+                            
                         }
                     } catch (IOException ex) {
                         Logger.getLogger(MostrarLista.class.getName()).log(Level.SEVERE, null, ex);
@@ -321,7 +324,52 @@ public class MostrarLista extends javax.swing.JFrame {
         }
         
     }
-    
+    private void LeerInicioListas(String ruta){
+        File listainidicada=new File(ruta+".txt");
+        String Nombres="";
+        String Descripcions="";
+        String direccions="";
+        int contador=0;
+        int contador2=0;
+        if(listainidicada.exists()){
+            try{
+                BufferedReader bf= new BufferedReader(new FileReader(ruta+".txt"));
+                String bfRead;
+                 
+                //esta lee todo el documento
+                
+                while((bfRead=bf.readLine())!=null){
+                  contador2++;
+                }
+                 bf= new BufferedReader(new FileReader(ruta+".txt"));
+                for (int i=0;i<contador2;i++){
+                    bfRead=bf.readLine();
+                    System.out.println(bfRead);
+                    
+                       if(contador==0){
+                           Nombres=bfRead;
+                           contador=1;
+                       }
+                       else if(contador==1){
+                           Descripcions=bfRead;
+                           contador=2;
+                       }
+                       else if(contador==2){                        
+                            contador=0;   
+
+                           try {
+                             this.listaGeneral.Buscar(ruta).getLista().InsertarFinal(Nombres, Descripcions, bfRead);
+
+                            } catch (IOException ex) {
+                               Logger.getLogger(MostrarLista.class.getName()).log(Level.SEVERE, null, ex);
+                           }
+                       } 
+                }
+                contador2=0;
+            }catch(Exception e){
+            } 
+        } 
+    }
     private void agregarListaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarListaActionPerformed
         
         String nombre;
